@@ -59,4 +59,13 @@ class Station
     end
     lines
   end
+
+  define_singleton_method(:find) do |id|
+    Station.all().each() do |station|
+      if station.id() == id
+        return station
+      end
+    end
+  end
+
 end

@@ -75,5 +75,13 @@ describe(Line) do
       expect(line1.stations()).to(eq([station2]))
     end
   end
-  
+
+  describe('.find') do
+    it("returns a line object given an id") do
+      line1 = Line.new({ :name => "Q" })
+      line1.save()
+      expect(Line.find(line1.id())).to(eq(line1))
+    end
+  end
+
 end

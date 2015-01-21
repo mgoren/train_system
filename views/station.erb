@@ -1,0 +1,13 @@
+<% station = Station.find(@id) %>
+<h1><%= station.name() %></h1>
+
+<h3>Lines at this station:</h3>
+<% if station.lines().any?() %>
+  <ul>
+  <% station.lines().each() do |line| %>
+    <li><a href="/lines/<%= line.id() %>"><%= line.name() %></a></li>
+  <% end %>
+  </ul>
+<% else %>
+  This station will not allow you to go anywhere.
+<% end %>

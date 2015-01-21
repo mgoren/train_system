@@ -1,0 +1,13 @@
+<% line = Line.find(@id) %>
+<h1><%= line.name() %></h1>
+
+<h3>This line services the following stations:</h3>
+<% if line.stations().any?() %>
+  <ul>
+  <% line.stations().each() do |station| %>
+    <li><a href="/stations/<%= station.id() %>"><%= station.name() %></a></li>
+  <% end %>
+  </ul>
+<% else %>
+  This line goes nowhere.
+<% end %>

@@ -61,4 +61,13 @@ class Line
     DB.exec("DELETE FROM stops WHERE line_id = #{self.id()} AND station_id = #{station.id()};")
   end
 
+  define_singleton_method(:find) do |id|
+    Line.all().each() do |line|
+      if line.id() == id
+        return line
+      end
+    end
+  end
+
+
 end

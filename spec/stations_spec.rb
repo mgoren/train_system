@@ -122,4 +122,12 @@ describe(Station) do
     end
   end
 
+  describe('.find') do
+    it("returns a station object given an id") do
+      station1 = Station.new({ :name => "Times Square" })
+      station1.save()
+      expect(Station.find(station1.id())).to(eq(station1))
+    end
+  end
+
 end

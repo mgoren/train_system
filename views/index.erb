@@ -1,0 +1,29 @@
+<h1>Train System</h1>
+
+<h3>Stations:</h3>
+<% if Station.all().any?() %>
+  <ul>
+  <% Station.all().each() do |station| %>
+    <li><a href="/stations/<%= station.id() %>"><%= station.name() %></a></li>
+  <% end %>
+  </ul>
+<% else %>
+  Your train system is devoid of stations!
+<% end %>
+
+<hr>
+
+<h3>Lines:</h3>
+<% if Line.all().any?() %>
+  <ul>
+  <% Line.all().each() do |line| %>
+    <li><a href="/lines/<%= line.id() %>"><%= line.name() %></a></li>
+  <% end %>
+  </ul>
+<% else %>
+  Your train system has no lines!
+<% end %>
+
+<hr>
+
+<h6><a href="/admin">[System Operator]</a></h6>

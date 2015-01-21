@@ -1,0 +1,47 @@
+<h1>Train System - Admin</h1>
+
+<div class = "left">
+<h3>Stations:</h3>
+<% if Station.all().any?() %>
+  <ul>
+  <% Station.all().each() do |station| %>
+    <li><a href="/admin/stations/<%= station.id() %>"><%= station.name() %></a></li>
+  <% end %>
+  </ul>
+<% else %>
+  Your train system is devoid of stations!
+<% end %>
+</div>
+
+<div class = "right">
+<h3>Lines:</h3>
+<% if Line.all().any?() %>
+  <ul>
+  <% Line.all().each() do |line| %>
+    <li><a href="/admin/lines/<%= line.id() %>"><%= line.name() %></a></li>
+  <% end %>
+  </ul>
+<% else %>
+  Your train system has no lines!
+<% end %>
+</div>
+
+<h2>Add station:</h2>
+<form action="/edit_stations" method="POST">
+  <div class="form-group">
+    <label class = "form-label" for="station_name">Enter station name:</label>
+    <input class = "form-control" id="station_name" name="station_name" class="form-control" type="text">
+  </div>
+  <button type="submit" class="btn btn-success">Add Station</button>
+</form>
+
+<hr>
+
+<h2>Add line:</h2>
+<form action="/edit_lines" method="POST">
+  <div class="form-group">
+    <label class = "form-label" for="line_name">Enter line name:</label>
+    <input class = "form-control" id="line_name" name="line_name" class="form-control" type="text">
+  </div>
+  <button type="submit" class="btn btn-success">Add Line</button>
+</form>
