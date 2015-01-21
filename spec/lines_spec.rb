@@ -75,4 +75,5 @@ describe(Line) do
       expect(line1.stations()).to(eq([station2]))
     end
   end
+  
 end
