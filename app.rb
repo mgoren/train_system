@@ -63,6 +63,26 @@ delete("/lines") do
   redirect("/admin")
 end
 
+patch("/lines/:line_id") do
+  line_id = params.fetch('line_id').to_i()
+  new_name = params.fetch('line_name')
+  line = Line.find(line_id)
+  line.update({:name => new_name})
+  url = "/admin/lines/" + line_id.to_s()
+  redirect(url)
+end
+
+patch("/stations/:station_id") do
+  station_id = params.fetch('station_id').to_i()
+  new_name = params.fetch('station_name')
+  station = Station.find(station_id)
+  station.update({:name => new_name})
+  url = "/admin/stations/" + station_id.to_s()
+  redirect(url)
+end
+
+
+
 post("/lines/:line_id") do
   line_id = params.fetch('line_id').to_i()
   station_id = params.fetch('station_id').to_i()
