@@ -33,6 +33,7 @@ class Line
   end
 
   define_method(:delete) do
+    DB.exec("DELETE FROM stops WHERE line_id = #{self.id()};")
     DB.exec("DELETE FROM lines WHERE id =#{self.id()};")
   end
 

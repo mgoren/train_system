@@ -32,6 +32,7 @@ class Station
   end
 
   define_method(:delete) do
+    DB.exec("DELETE FROM stops WHERE station_id = #{self.id()};")
     DB.exec("DELETE FROM stations WHERE id = #{self.id()};")
   end
 

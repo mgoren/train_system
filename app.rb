@@ -44,10 +44,29 @@ post("/edit_stations") do
   redirect("/admin")
 end
 
+# get('/stations')
+# post('/stations')
+#
+# get('/stations/:id') {}
+# delete('/stations/:id')
+# patch('/stations/:id')
+
+delete("/edit_stations") do
+  station_id = params.fetch('station_id').to_i()
+  Station.find(station_id).delete()
+  redirect("/admin")
+end
+
 post("/edit_lines") do
   line_name = params.fetch('line_name')
   new_line = Line.new({ :name => line_name })
   new_line.save()
+  redirect("/admin")
+end
+
+delete("/edit_lines") do
+  line_id = params.fetch('line_id').to_i()
+  Line.find(line_id).delete()
   redirect("/admin")
 end
 
