@@ -98,12 +98,3 @@ delete("/lines/:line_id") do
   url = "/admin/lines/" + line_id.to_s()
   redirect(url)
 end
-
-# --
-#
-# get('/stations')
-# post('/stations')
-#
-# get('/stations/:id') {}
-# delete('/stations/:id')
-# patch('/stations/:id')
