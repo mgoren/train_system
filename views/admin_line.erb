@@ -15,13 +15,15 @@
 
 <hr>
 
-<h2>Add Stop:</h2>
 <form action="/lines/<%= @id %>" method="POST">
   <div class="form-group">
+    <label class = "form-label" for="station_id">Add stop:</label>
     <select class = "form-control" id="station_id" name="station_id">
       <option value='' disabled selected style='display:none'>Please Choose</option>
       <% Station.all().each() do |station| %>
-        <option value="<%= station.id() %>"><%= station.name() %></option>
+        <% if ! station.lines().include?(line) %>
+          <option value="<%= station.id() %>"><%= station.name() %></option>
+        <% end %>
       <% end %>
     </select>
   </div>
@@ -30,10 +32,10 @@
 
 <hr>
 
-<h2>Remove Stop:</h2>
 <form action="/lines/<%= @id %>" method="POST">
   <input name="_method" type="hidden" value="delete">
   <div class="form-group">
+    <label class = "form-label" for="station_id">Remove stop:</label>
     <select class = "form-control" id="station_id" name="station_id">
       <option value='' disabled selected style='display:none'>Please Choose</option>
       <% line.stations().each() do |station| %>
@@ -46,12 +48,11 @@
 
 <hr>
 
-<h2>Change line name:</h2>
 <form action="/lines/<%= @id %>" method="POST">
   <input name="_method" type="hidden" value="patch">
   <div class="form-group">
-    <label class = "form-label" for="line_name">Enter new name:</label>
-    <input class = "form-control" id="line_name" name="line_name" class="form-control" type="text">
+    <label class = "form-label" for="line_name">Change line name:</label>
+    <input class = "form-control" id="line_name" name="line_name" class="form-control" type="text" placeholder="Enter new name">
   </div>
   <button type="submit" class="button button-edit">Change name</button>
 </form>

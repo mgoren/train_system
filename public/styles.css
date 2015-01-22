@@ -31,7 +31,7 @@ hr {
 }
 
 .form-control {
-  width: 60%;
+  width: 85%;
 }
 
 .button {
@@ -65,4 +65,8 @@ hr {
     width: 100%;
     height: 100%;
   }
+}
+
+.lists {
+  margin-bottom: 50px;
 }

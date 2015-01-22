@@ -38,9 +38,11 @@ get("/admin/lines/:id") do
 end
 
 post("/stations") do
-  station_name = params.fetch('station_name')
-  new_station = Station.new({ :name => station_name })
-  new_station.save()
+  station_name = params.fetch('station_name').strip()
+  if station_name != ""
+    new_station = Station.new({ :name => station_name })
+    new_station.save()
+  end
   redirect("/admin")
 end
 
@@ -51,9 +53,11 @@ delete("/stations") do
 end
 
 post("/lines") do
-  line_name = params.fetch('line_name')
-  new_line = Line.new({ :name => line_name })
-  new_line.save()
+  line_name = params.fetch('line_name').strip()
+  if line_name != ""
+    new_line = Line.new({ :name => line_name })
+    new_line.save()
+  end
   redirect("/admin")
 end
 
@@ -65,18 +69,22 @@ end
 
 patch("/lines/:line_id") do
   line_id = params.fetch('line_id').to_i()
-  new_name = params.fetch('line_name')
-  line = Line.find(line_id)
-  line.update({:name => new_name})
+  new_name = params.fetch('line_name').strip()
+  if new_name != ""
+    line = Line.find(line_id)
+    line.update({:name => new_name})
+  end
   url = "/admin/lines/" + line_id.to_s()
   redirect(url)
 end
 
 patch("/stations/:station_id") do
   station_id = params.fetch('station_id').to_i()
-  new_name = params.fetch('station_name')
-  station = Station.find(station_id)
-  station.update({:name => new_name})
+  new_name = params.fetch('station_name').strip()
+  if new_name != ""
+    station = Station.find(station_id)
+    station.update({:name => new_name})
+  end
   url = "/admin/stations/" + station_id.to_s()
   redirect(url)
 end

@@ -1,59 +1,59 @@
 <h1>Train System - Admin</h1>
 
-<div class = "left">
-<h3>Stations:</h3>
-<% if Station.all().any?() %>
-  <ul>
-  <% Station.all().each() do |station| %>
-    <li><a href="/admin/stations/<%= station.id() %>"><%= station.name() %></a></li>
-  <% end %>
-  </ul>
-<% else %>
-  Your train system is devoid of stations!
-<% end %>
-</div>
+<div class="row lists">
+  <div class = "col-md-6">
+    <h3>Stations:</h3>
+    <% if Station.all().any?() %>
+      <ul>
+      <% Station.all().each() do |station| %>
+        <li><a href="/admin/stations/<%= station.id() %>"><%= station.name() %></a></li>
+      <% end %>
+      </ul>
+    <% else %>
+      Your train system is devoid of stations!
+    <% end %>
+  </div>
 
-<div class = "right">
-<h3>Lines:</h3>
-<% if Line.all().any?() %>
-  <ul>
-  <% Line.all().each() do |line| %>
-    <li><a href="/admin/lines/<%= line.id() %>"><%= line.name() %></a></li>
-  <% end %>
-  </ul>
-<% else %>
-  Your train system has no lines!
-<% end %>
+  <div class = "col-md-6">
+    <h3>Lines:</h3>
+    <% if Line.all().any?() %>
+      <ul>
+      <% Line.all().each() do |line| %>
+        <li><a href="/admin/lines/<%= line.id() %>"><%= line.name() %></a></li>
+      <% end %>
+      </ul>
+    <% else %>
+      Your train system has no lines!
+    <% end %>
+  </div>
 </div>
 
 <hr>
 
-<h2>Add station:</h2>
 <form action="/stations" method="POST">
   <div class="form-group">
-    <label class = "form-label" for="station_name">Enter station name:</label>
-    <input class = "form-control" id="station_name" name="station_name" class="form-control" type="text">
+    <label class = "form-label" for="station_name">Add station:</label>
+    <input class = "form-control" id="station_name" name="station_name" class="form-control" type="text" placeholder="Enter station name">
   </div>
     <button type="submit" class="button button-add">Add Station</button>
 </form>
 
 <hr>
 
-<h2>Add line:</h2>
 <form action="/lines" method="POST">
   <div class="form-group">
-    <label class = "form-label" for="line_name">Enter line name:</label>
-    <input class = "form-control" id="line_name" name="line_name" class="form-control" type="text">
+    <label class = "form-label" for="line_name">Add line:</label>
+    <input class = "form-control" id="line_name" name="line_name" class="form-control" type="text" placeholder="Enter line name">
   </div>
   <button type="submit" class="button button-add">Add Line</button>
 </form>
 
 <hr>
 
-<h2>Delete station:</h2>
 <form action="/stations" method="POST">
   <input name="_method" type="hidden" value="delete">
   <div class="form-group">
+    <label class = "form-label" for="station_id">Delete station:</label>
     <select class = "form-control" id="station_id" name="station_id">
       <option value='' disabled selected style='display:none'>Please Choose</option>
       <% Station.all().each() do |station| %>
@@ -66,10 +66,10 @@
 
 <hr>
 
-<h2>Delete line:</h2>
 <form action="/lines" method="POST">
   <input name="_method" type="hidden" value="delete">
   <div class="form-group">
+    <label class = "form-label" for="line_id">Delete line:</label>
     <select class = "form-control" id="line_id" name="line_id">
       <option value='' disabled selected style='display:none'>Please Choose</option>
       <% Line.all().each() do |line| %>
