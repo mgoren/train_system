@@ -20,12 +20,13 @@
   <div class="form-group">
     <label class = "form-label" for="line_id">Choose line to connect to this station:</label>
     <select class = "form-control" id="line_id" name="line_id">
+      <option value='' disabled selected style='display:none'>Please Choose</option>
       <% Line.all().each() do |line| %>
         <option value="<%= line.id() %>"><%= line.name() %></option>
       <% end %>
     </select>
   </div>
-  <button type="submit" class="btn btn-success">Add Line</button>
+  <button type="submit" class="button button-add">Add Line</button>
 </form>
 
 <hr>
@@ -36,12 +37,13 @@
   <div class="form-group">
     <label class = "form-label" for="line_id">Choose line to remove connection:</label>
     <select class = "form-control" id="line_id" name="line_id">
+      <option value='' disabled selected style='display:none'>Please Choose</option>
       <% station.lines().each() do |line| %>
         <option value="<%= line.id() %>"><%= line.name() %></option>
       <% end %>
     </select>
   </div>
-  <button type="submit" class="btn btn-success">Remove Line</button>
+  <button type="submit" class="button button-delete">Remove Line</button>
 </form>
 
 <hr>
@@ -53,7 +55,7 @@
     <label class = "form-label" for="station_name">Enter new name:</label>
     <input class = "form-control" id="station_name" name="station_name" class="form-control" type="text">
   </div>
-  <button type="submit" class="btn btn-success">Change name</button>
+  <button type="submit" class="button button-edit">Change name</button>
 </form>
 
 <hr>
