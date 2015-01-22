@@ -12,7 +12,7 @@ class Line
 
   define_singleton_method(:all) do
     lines = []
-    returned_lines = DB.exec("SELECT * FROM lines;")
+    returned_lines = DB.exec("SELECT * FROM lines ORDER BY name;")
     returned_lines.each() do |line|
       name = line.fetch("name")
       id = line.fetch("id").to_i()
@@ -54,7 +54,7 @@ class Line
       id = returned_station.first().fetch('id').to_i()
       stations.push(Station.new({:name => name, :id => id}))
     end
-    stations
+    stations.sort!{ |a,b| a.name.downcase <=> b.name.downcase }
   end
 
   # removes connection, not actual line or station

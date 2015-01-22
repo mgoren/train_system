@@ -12,7 +12,7 @@ class Station
 
   define_singleton_method(:all) do
     stations = []
-    returned_stations = DB.exec("SELECT * FROM stations;")
+    returned_stations = DB.exec("SELECT * FROM stations ORDER BY name;")
     returned_stations.each() do |station|
       name = station.fetch("name")
       id = station.fetch("id").to_i()
@@ -58,7 +58,7 @@ class Station
       id = returned_line.first().fetch('id').to_i()
       lines.push(Line.new({:name => name, :id => id}))
     end
-    lines
+    lines.sort!{ |a,b| a.name.downcase <=> b.name.downcase }
   end
 
   define_singleton_method(:find) do |id|
