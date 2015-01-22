@@ -16,8 +16,7 @@
 <hr>
 
 <h2>Add Connection:</h2>
-<form action="/edit_line_connection" method="POST">
-  <input type="hidden" name="station_id" value="<%= @id %>">
+<form action="/stations/<%= @id %>" method="POST">
   <div class="form-group">
     <label class = "form-label" for="line_id">Choose line to connect to this station:</label>
     <select class = "form-control" id="line_id" name="line_id">
@@ -31,5 +30,20 @@
 
 <hr>
 
+<h2>Remove Connection:</h2>
+<form action="/stations/<%= @id %>" method="POST">
+  <input name="_method" type="hidden" value="delete">
+  <div class="form-group">
+    <label class = "form-label" for="line_id">Choose line to remove connection:</label>
+    <select class = "form-control" id="line_id" name="line_id">
+      <% station.lines().each() do |line| %>
+        <option value="<%= line.id() %>"><%= line.name() %></option>
+      <% end %>
+    </select>
+  </div>
+  <button type="submit" class="btn btn-success">Remove Line</button>
+</form>
+
+<hr>
 
 <a href="/admin">Back</a>

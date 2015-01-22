@@ -37,56 +37,73 @@ get("/admin/lines/:id") do
   erb(:admin_line)
 end
 
-post("/edit_stations") do
+post("/stations") do
   station_name = params.fetch('station_name')
   new_station = Station.new({ :name => station_name })
   new_station.save()
   redirect("/admin")
 end
 
-# get('/stations')
-# post('/stations')
-#
-# get('/stations/:id') {}
-# delete('/stations/:id')
-# patch('/stations/:id')
-
-delete("/edit_stations") do
+delete("/stations") do
   station_id = params.fetch('station_id').to_i()
   Station.find(station_id).delete()
   redirect("/admin")
 end
 
-post("/edit_lines") do
+post("/lines") do
   line_name = params.fetch('line_name')
   new_line = Line.new({ :name => line_name })
   new_line.save()
   redirect("/admin")
 end
 
-delete("/edit_lines") do
+delete("/lines") do
   line_id = params.fetch('line_id').to_i()
   Line.find(line_id).delete()
   redirect("/admin")
 end
 
-post("/edit_line_connection") do
+post("/lines/:line_id") do
   line_id = params.fetch('line_id').to_i()
   station_id = params.fetch('station_id').to_i()
   line = Line.find(line_id)
   station = Station.find(station_id)
   station.add_line(line)
-  url = "/admin/stations/" + station_id.to_s()
+  url = "/admin/lines/" + line_id.to_s()
   redirect(url)
 end
 
-post("/edit_station_connection") do
+post("/stations/:station_id") do
   line_id = params.fetch('line_id').to_i()
   station_id = params.fetch('station_id').to_i()
   line = Line.find(line_id)
   station = Station.find(station_id)
   line.add_station(station)
+  url = "/admin/stations/" + station_id.to_s()
+  redirect(url)
+end
+
+delete("/stations/:station_id") do
+  line_id = params.fetch('line_id').to_i()
+  station_id = params.fetch('station_id').to_i()
+  Station.find(station_id).remove_line(Line.find(line_id))
+  url = "/admin/stations/" + station_id.to_s()
+  redirect(url)
+end
+
+delete("/lines/:line_id") do
+  line_id = params.fetch('line_id').to_i()
+  station_id = params.fetch('station_id').to_i()
+  Line.find(line_id).remove_station(Station.find(station_id))
   url = "/admin/lines/" + line_id.to_s()
   redirect(url)
-  
 end
+
+# --
+#
+# get('/stations')
+# post('/stations')
+#
+# get('/stations/:id') {}
+# delete('/stations/:id')
+# patch('/stations/:id')

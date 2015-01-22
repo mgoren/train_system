@@ -27,7 +27,7 @@
 </div>
 
 <h2>Add station:</h2>
-<form action="/edit_stations" method="POST">
+<form action="/stations" method="POST">
   <div class="form-group">
     <label class = "form-label" for="station_name">Enter station name:</label>
     <input class = "form-control" id="station_name" name="station_name" class="form-control" type="text">
@@ -38,7 +38,7 @@
 <hr>
 
 <h2>Add line:</h2>
-<form action="/edit_lines" method="POST">
+<form action="/lines" method="POST">
   <div class="form-group">
     <label class = "form-label" for="line_name">Enter line name:</label>
     <input class = "form-control" id="line_name" name="line_name" class="form-control" type="text">
@@ -49,7 +49,7 @@
 <hr>
 
 <h2>Delete station:</h2>
-<form action="/edit_stations" method="POST">
+<form action="/stations" method="POST">
   <input name="_method" type="hidden" value="delete">
   <div class="form-group">
     <label class = "form-label" for="station_id">Choose station to delete:</label>
@@ -65,7 +65,7 @@
 <hr>
 
 <h2>Delete line:</h2>
-<form action="/edit_lines" method="POST">
+<form action="/lines" method="POST">
   <input name="_method" type="hidden" value="delete">
   <div class="form-group">
     <label class = "form-label" for="line_id">Choose line to delete:</label>

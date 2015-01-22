@@ -16,8 +16,7 @@
 <hr>
 
 <h2>Add Stop:</h2>
-<form action="/edit_station_connection" method="POST">
-  <input type="hidden" name="line_id" value="<%= @id %>">
+<form action="/lines/<%= @id %>" method="POST">
   <div class="form-group">
     <label class = "form-label" for="station_id">Choose stop to add for this line:</label>
     <select class = "form-control" id="station_id" name="station_id">
@@ -27,6 +26,22 @@
     </select>
   </div>
   <button type="submit" class="btn btn-success">Add station</button>
+</form>
+
+<hr>
+
+<h2>Remove Connection:</h2>
+<form action="/lines/<%= @id %>" method="POST">
+  <input name="_method" type="hidden" value="delete">
+  <div class="form-group">
+    <label class = "form-label" for="station_id">Choose stop to remove:</label>
+    <select class = "form-control" id="station_id" name="station_id">
+      <% line.stations().each() do |station| %>
+        <option value="<%= station.id() %>"><%= station.name() %></option>
+      <% end %>
+    </select>
+  </div>
+  <button type="submit" class="btn btn-success">Remove Stop</button>
 </form>
 
 <hr>
