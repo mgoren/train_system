@@ -2,7 +2,7 @@
 <% line = Line.find(@id) %>
 <h1><%= line.name() %></h1>
 
-<h3>This line services the following stations:</h3>
+<h3>This line serves the following stations:</h3>
 <% if line.stations().any?() %>
   <ul>
   <% line.stations().each() do |station| %>
@@ -18,7 +18,6 @@
 <h2>Add Stop:</h2>
 <form action="/lines/<%= @id %>" method="POST">
   <div class="form-group">
-    <label class = "form-label" for="station_id">Choose stop to add for this line:</label>
     <select class = "form-control" id="station_id" name="station_id">
       <option value='' disabled selected style='display:none'>Please Choose</option>
       <% Station.all().each() do |station| %>
@@ -31,11 +30,10 @@
 
 <hr>
 
-<h2>Remove Connection:</h2>
+<h2>Remove Stop:</h2>
 <form action="/lines/<%= @id %>" method="POST">
   <input name="_method" type="hidden" value="delete">
   <div class="form-group">
-    <label class = "form-label" for="station_id">Choose stop to remove:</label>
     <select class = "form-control" id="station_id" name="station_id">
       <option value='' disabled selected style='display:none'>Please Choose</option>
       <% line.stations().each() do |station| %>

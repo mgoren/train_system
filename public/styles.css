@@ -9,7 +9,6 @@ h1 {
 
 h2 {
   font-size: 18px;
-  text-align: center;
   margin-bottom: 20px;
   font-weight: strong;
 }
@@ -24,11 +23,15 @@ hr {
 
 .container {
   background-color: #FFE4CC;
-  width: 800px;
+  width: 600px;
   margin: 5px, auto 0 auto;
   padding: 15px;
   border: 3px solid gray;
   border-radius: 15px;
+}
+
+.form-control {
+  width: 60%;
 }
 
 .button {
@@ -51,12 +54,7 @@ hr {
   background-color: #A8B2CD;
 }
 
-.button-back {
-  float: left;
-  background-color: #764A8E;
-}
-
-@media (max-width: 850px) {
+@media (max-width: 600px) {
   body {
     background-color: #FFF6CD;
   }

@@ -26,13 +26,15 @@
 <% end %>
 </div>
 
+<hr>
+
 <h2>Add station:</h2>
 <form action="/stations" method="POST">
   <div class="form-group">
     <label class = "form-label" for="station_name">Enter station name:</label>
     <input class = "form-control" id="station_name" name="station_name" class="form-control" type="text">
   </div>
-  <button type="submit" class="button button-add">Add Station</button>
+    <button type="submit" class="button button-add">Add Station</button>
 </form>
 
 <hr>
@@ -52,7 +54,6 @@
 <form action="/stations" method="POST">
   <input name="_method" type="hidden" value="delete">
   <div class="form-group">
-    <label class = "form-label" for="station_id">Choose station to delete:</label>
     <select class = "form-control" id="station_id" name="station_id">
       <option value='' disabled selected style='display:none'>Please Choose</option>
       <% Station.all().each() do |station| %>
@@ -69,7 +70,6 @@
 <form action="/lines" method="POST">
   <input name="_method" type="hidden" value="delete">
   <div class="form-group">
-    <label class = "form-label" for="line_id">Choose line to delete:</label>
     <select class = "form-control" id="line_id" name="line_id">
       <option value='' disabled selected style='display:none'>Please Choose</option>
       <% Line.all().each() do |line| %>
